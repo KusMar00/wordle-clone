@@ -1,11 +1,7 @@
 import React from "react";
 
 const Letter = () => {
-  return (
-    <div className="Letter">
-      <p>A</p>
-    </div>
-  );
+  return <div className="Letter"></div>;
 };
 
 export default Letter;
