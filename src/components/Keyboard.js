@@ -8,7 +8,6 @@ const Keyboard = () => {
   const row3 = ["Z", "X", "C", "V", "B", "N", "M"];
 
   const {
-    board,
     disabledLetters,
     currAttempt,
     gameOver,
@@ -53,7 +52,7 @@ const Keyboard = () => {
   }, [handleKeyboard]);
 
   return (
-    <div className="Keyboard">
+    <div className="Keyboard" onKeyDown={handleKeyboard}>
       <div className="Row1">
         {row1.map((letter) => {
           return (
