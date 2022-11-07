@@ -5,6 +5,8 @@ import Board from "./components/Board";
 import Keyboard from "./components/Keyboard";
 import GameOver from "./components/GameOver";
 
+export const AppContext = createContext();
+
 function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letter: 0 });
@@ -90,4 +92,3 @@ function App() {
   );
 }
 export default App;
-export const AppContext = createContext();

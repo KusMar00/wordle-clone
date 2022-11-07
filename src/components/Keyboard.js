@@ -52,8 +52,8 @@ const Keyboard = () => {
   }, [handleKeyboard]);
 
   return (
-    <div className="Keyboard" onKeyDown={handleKeyboard}>
-      <div className="Row1">
+    <div className="keyboard" onKeyDown={handleKeyboard}>
+      <div className="line1">
         {row1.map((letter) => {
           return (
             <Key
@@ -63,7 +63,7 @@ const Keyboard = () => {
           );
         })}
       </div>
-      <div className="Row2">
+      <div className="line2">
         {row2.map((letter) => {
           return (
             <Key
@@ -73,7 +73,7 @@ const Keyboard = () => {
           );
         })}
       </div>
-      <div className="Row3">
+      <div className="line3">
         <Key keyVal={"ENTER"} bigKey />
         {row3.map((letter) => {
           return (
