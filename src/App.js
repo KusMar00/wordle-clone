@@ -5,8 +5,6 @@ import Board from "./components/Board";
 import Keyboard from "./components/Keyboard";
 import GameOver from "./components/GameOver";
 
-export const AppContext = createContext();
-
 function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letter: 0 });
@@ -50,45 +48,46 @@ function App() {
         letter: currAttempt.letter - 1,
       });
     }
-
-    const onSelectLetter = (key) => {
-      if (currAttempt.letter > 4) return;
-      const newBoard = [...board];
-      newBoard[currAttempt.attempt][currAttempt.letter] = key;
-      setBoard(newBoard);
-      setCurrAttempt({
-        attempt: currAttempt.attempt,
-        letter: currAttempt.letter + 1,
-      });
-    };
-
-    return (
-      <div className="App">
-        <nav>
-          <h1>Wordle</h1>
-        </nav>
-        <AppContext.Provider
-          value={{
-            board,
-            setBoard,
-            currAttempt,
-            setCurrAttempt,
-            correctWord,
-            onSelectLetter,
-            onDelete,
-            onEnter,
-            setDisabledLetters,
-            disabledLetters,
-            gameOver,
-          }}
-        >
-          <div className="game">
-            <Board />
-            {gameOver.gameOver ? <GameOver /> : <Keyboard />}
-          </div>
-        </AppContext.Provider>
-      </div>
-    );
   };
+
+  const onSelectLetter = (key) => {
+    if (currAttempt.letter > 4) return;
+    const newBoard = [...board];
+    newBoard[currAttempt.attempt][currAttempt.letter] = key;
+    setBoard(newBoard);
+    setCurrAttempt({
+      attempt: currAttempt.attempt,
+      letter: currAttempt.letter + 1,
+    });
+  };
+
+  return (
+    <div className="App">
+      <nav>
+        <h1>Wordle</h1>
+      </nav>
+      <AppContext.Provider
+        value={{
+          board,
+          setBoard,
+          currAttempt,
+          setCurrAttempt,
+          correctWord,
+          onSelectLetter,
+          onDelete,
+          onEnter,
+          setDisabledLetters,
+          disabledLetters,
+          gameOver,
+        }}
+      >
+        <div className="game">
+          <Board />
+          {gameOver.gameOver ? <GameOver /> : <Keyboard />}
+        </div>
+      </AppContext.Provider>
+    </div>
+  );
 }
 export default App;
+export const AppContext = createContext();
